@@ -1,5 +1,8 @@
-//Jeff Gaston
-
+/*
+   Name: Jeff Gaston
+   My HackerRank: hackerrank.com/jeffgaston59
+   My Github: github.com/JeffGaston
+*/
 import java.util.Scanner;
 import java.util.NoSuchElementException;
 
@@ -17,7 +20,7 @@ public class Final{
   public int size(){
 	  return size;
   }
-  public FinalExam() //constructor
+  public Final() //constructor
   {
       data = new int[14];
       size = 0;
@@ -35,7 +38,7 @@ public class Final{
 	  return ifEmpty;
   }
  
-  //display method for FinalExam object to use
+  //display method for Final object to use
   public void display()
   {
 	  for(int i = 1; i < size+1; i++){
@@ -108,11 +111,11 @@ public class Final{
        return hole;
   }
     
-}// FinalExam class
+}// Final class
 
 class Container //for other display and main methods
 { 
-    //display method for arrays (notFinalExam object)
+    //display method for arrays (notFinal object)
     public static void display(int [] array)
     {
        for(int a = 0; a < array.length; a++){
@@ -130,7 +133,7 @@ class Container //for other display and main methods
         System.out.println("Array:");  
         display(A);
 
-        FinalExam H = new FinalExam();
+        Final H = new Final();
                 
         System.out.println("===================================="); 
         System.out.println("Add to Heap:");

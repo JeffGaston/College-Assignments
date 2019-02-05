@@ -1,3 +1,8 @@
+/*
+   Name: Jeff Gaston
+   My HackerRank: hackerrank.com/jeffgaston59
+   My Github: github.com/JeffGaston
+*/
 import java.io.*;
 import java.util.*;
 public class InternetUsers{
@@ -22,7 +27,6 @@ public class InternetUsers{
             String stt= st.nextToken();
             try{
                population[i] = Integer.parseInt(stt);
-               //System.out.println(stt);
             }
             catch(Exception e){
                if(country[i] == null)

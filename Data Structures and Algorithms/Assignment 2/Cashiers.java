@@ -1,3 +1,8 @@
+/*
+   Name: Jeff Gaston
+   My HackerRank: hackerrank.com/jeffgaston59
+   My Github: github.com/JeffGaston
+*/
 import java.util.*;
 public class Cashiers{
    public static int[][] queues;
