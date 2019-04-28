@@ -6,7 +6,7 @@
 import java.util.Scanner;
 import java.util.NoSuchElementException;
 
-public class Final{
+public class FinalAssignment{
 
 /* Three-way heap and heapsort
  * Date supplied in array declaration
@@ -20,7 +20,7 @@ public class Final{
   public int size(){
 	  return size;
   }
-  public Final() //constructor
+  public FinalAssignment() //constructor
   {
       data = new int[14];
       size = 0;
@@ -111,7 +111,7 @@ public class Final{
        return hole;
   }
     
-}// Final class
+}// FinalAssignment class
 
 class Container //for other display and main methods
 { 
@@ -133,7 +133,7 @@ class Container //for other display and main methods
         System.out.println("Array:");  
         display(A);
 
-        Final H = new Final();
+        FinalAssignment H = new FinalAssignment();
                 
         System.out.println("===================================="); 
         System.out.println("Add to Heap:");
