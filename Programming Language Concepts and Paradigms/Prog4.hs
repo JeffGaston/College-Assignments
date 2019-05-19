@@ -28,27 +28,27 @@ datesInMonth month ((m,d,y):xs)
   | otherwise  = datesInMonth month xs 
 
 -- 4. Takes a date and returns its string equivalent in the form "February 23, 2018".
-dates2Str :: (Int, Int, Int) -> String
-dates2Str (m,d,y)
-  | m == 1    = "January " ++ show m ++ ", " ++ show y
-  | m == 2    = "February " ++ show m ++ ", " ++ show y
-  | m == 3    = "March " ++ show m ++ ", " ++ show y
-  | m == 4    = "April " ++ show m ++ ", " ++ show y
-  | m == 5    = "May " ++ show m ++ ", " ++ show y
-  | m == 6    = "June " ++ show m ++ ", " ++ show y
-  | m == 7    = "July " ++ show m ++ ", " ++ show y
-  | m == 8    = "August " ++ show m ++ ", " ++ show y
-  | m == 9    = "September " ++ show m ++ ", " ++ show y
-  | m == 10   = "October " ++ show m ++ ", " ++ show y
-  | m == 11   = "November " ++ show m ++ ", " ++ show y
-  | otherwise = "December " ++ show m ++ ", " ++ show y
+date2Str :: (Int, Int, Int) -> String
+date2Str (m,d,y)
+  | m == 1    = "January " ++ show d ++ ", " ++ show y
+  | m == 2    = "February " ++ show d ++ ", " ++ show y
+  | m == 3    = "March " ++ show d ++ ", " ++ show y
+  | m == 4    = "April " ++ show d ++ ", " ++ show y
+  | m == 5    = "May " ++ show d ++ ", " ++ show y
+  | m == 6    = "June " ++ show d ++ ", " ++ show y
+  | m == 7    = "July " ++ show d ++ ", " ++ show y
+  | m == 8    = "August " ++ show d ++ ", " ++ show y
+  | m == 9    = "September " ++ show d ++ ", " ++ show y
+  | m == 10   = "October " ++ show d ++ ", " ++ show y
+  | m == 11   = "November " ++ show d ++ ", " ++ show y
+  | otherwise = "December " ++ show d ++ ", " ++ show y
 
 -- 5. Same as above, but do not use 12 conditionals. Instead, use a list holding 12 strings (the months)
       -- as well as the !! operator to index this list.
 date2Str' :: (Int, Int, Int) -> String
 date2Str' (m,d,y) = (["January ","February ","March ","April ","May ","June ",
                      "July ","August ","September ","October ","November ","December "])
-                     !! (m-1) ++ show m ++ ", " ++ show y
+                     !! (m-1) ++ show d ++ ", " ++ show y
 
 -- 6. Takes a numeric day in the calendar year (between 1 and 365) and returns what month that day is in
       -- (excluding leap years).

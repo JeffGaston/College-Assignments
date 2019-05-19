@@ -5,7 +5,7 @@
 	Description: An amalgamation of various functions in Haskell
 ######################################################## -}
 
-     module Prog2 where
+     module Prog1 where
 
 -- Returns whether a given floating point number is less than zero
 isNegative :: Float -> Bool
@@ -42,6 +42,7 @@ tripleNumber input = if input <= 100 then (input*3) else input
 isVowel :: Char -> Bool
 isVowel x
       | x == 'a' || x == 'e' || x == 'i' || x == 'o' || x == 'u' = True
+      | x == 'A' || x == 'E' || x == 'I' || x == 'O' || x == 'U' = True
       | otherwise                                                = False
 
 -- Returns the equivalent letter grade for a given numerical integer grade, per the syllabus for this course.
