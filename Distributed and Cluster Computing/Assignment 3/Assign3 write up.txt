@@ -1,0 +1,3 @@
+CSC 496 Assignment 3 Objectives
+
+Goal: Alter heat-source.c from sequential to parallel

@@ -1,0 +1,94 @@
+CSC 331 Assignment_3 Objectives
+
+Goal: Implement a basic Unix CLI(Shell) in C
+
+Questions for Dr. Ngo:
+	-What does he mean by the following:
+		"If the output file exists before you run your program, you should simply overwrite it(after truncating it)."?
+			-Do we still just overwrite the file? what does "after truncating it" mean?
+Personal Notes:
+	-Don't write this using CodeBlocks on windows.
+
+Name: grsh(Golden Ram Shell)
+Source code name: "grsh.c"
+
+what it is:
+	-It is an interactive loop
+		-Runs a while loop
+			-asks for input while input != "exit"
+				-"exit" is a built in command
+	
+What it does:
+	-repeatedly prints prompt "grsh> "
+	-takes input
+		-parses input
+		-accepts commands
+			-use fork(),exec(0, and wait()/waitpid()
+			-Shell finds executables in directories specified by path and creates a new process to run them
+				-Use access() system call to check if a particular file exists 
+				-ex for ls
+					-path is set to include both "/bin" and "/usr/bin"
+						-try "access("/bin/ls",X_OK)" if fails, try "/usr/bin/ls" else it is an error 
+				-initial shell path should contain one directory "/bin"
+			-Checks if command is built-in first
+				-ex, to invoke exit grsh should simply call "exit(0)" within the grsh code
+				-"exit", "cd", and "path" should be built-in commands
+					-"cd" always takes on argument(anything else is error)
+						-use "chdir()" sys call with argument supplied by the user(failure should return error)
+					-"path" takes 0 => args, each seperated by white space
+						-ex: "grsh> path /bin /usr/bin"
+							-adds "/bin" and "/usr/bin" to the search path of the shell
+						-Empty path means that the shell should not be able to run any programs(except built-in commands)
+						-path command always overwrites the old path with the newly specified path
+		-waits for the command to finish
+		-repeats until the user types exit
+		-accepts batch files 
+			-ex "prompt> ./grsh batch.txt"
+			-No prompt to be printed in batch mode
+			-read untill EOF in batch mode then exit(0)
+	-Shell should create a process for each new command(except for built-in commands)
+		-"exit" is a built-in command
+	-Shell should be able to redirect output of a program to a file which is usually done with ">" character
+		-errors should be rerouted as well
+		-if output file exists before running program then overwrite it (after truncating it)
+		-Format of redirection is:
+			-"a command (and possibly some arguments) followed by the redirection symbol followed by a filename"
+		-errors if multiples files or redirection signs
+		-Doesn't need to redirect for built in commands
+	-Shell should allow parallel commands with the "&" character
+		-ex: "grsh> cmd1 & cmd2 args 1 args 2 & cmd3 args1"
+			-Don't wait for one to complete, should be done simultaneuously
+			-Should wait for all processes to complete using "wait()" or "waitpid()"
+	-Should only print the error message:
+		-"char error_message[30] = "An error has occurred\n";
+		  write(STDERR_FILENO, error_message, strlen(error_message));"
+		-Should continue processing after one and only error message
+		-Bad batch file or more than one file should exit by calling exit(1)
+	-Should catch syntax errors
+		-Programs the shell run should catch program-related errros
+			-I don't have to write for those errors
+		
+Notes
+	-Can be invoked with either no arg or single arg
+		-anything else is an error
+	-Ex running grsh
+		-"prompt> ./grsh
+		  grsh> 
+		 "
+	-use "getline()" to read lines
+		-Switch to reading files in batch mode 
+	-use strtok() to parse the input into constituent pieces
+		-can use strtok_r() for nested tokenization(refer to man page)
+	-Must use execv
+		-Does not return when successful
+		-Only returns when error
+	-Don't use system() library function call to run a command
+	-don't have to worry about specify binary using a search path, absolute, or relative paths
+	-Hints
+		-Get basic funcionalities done first
+			-single commands running such as ls
+			-Next, add built-in commands, then redirection, lastly parallel commands
+		-Make code robust to white space such as "\t" and " ". User should put in variable amounts of white space
+		-Check return codes of all system calls from beginning of work
+		-Test code thoroughly
+		-Use version control to keep working versions
