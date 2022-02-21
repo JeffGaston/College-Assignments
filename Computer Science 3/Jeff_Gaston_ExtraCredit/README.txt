@@ -1,5 +1,5 @@
 Description:
-This program calculates all shortest paths for a king chess peice to get to a queen. It uses the concept of manhattan distance
+This program calculates all shortest paths for a king chess piece to get to a queen. It uses the concept of manhattan distance
 to output lines of moves to the queen, the total amount of possible solutions, and the manhattan distance to the console.
 
 How to use:
